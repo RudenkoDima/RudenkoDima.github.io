@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal website of Dmitry Rudenko, PhD Student at CERGE-EI">
+    <meta name="keywords" content="dmitry rudenko, dmitry rudenko phd, dmitry rudenko econ, dmitry rudenko cerge-ei">
+    <meta name="author" content="Dmitry Rudenko">
+    <meta name="google-site-verification" content="80B0e6xnYiw4vMX5YtQmrVAq3MSy5H3yLORHWU-FrNU" />
+    <title>Dmitry Rudenko | PhD Student at CERGE-EI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --primary-light: #2d7a96;
+            --accent: #003087;
+            --accent-light: #0d4db3;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+            --bg-white: #ffffff;
+            --bg-subtle: #fafafa;
+            --border-light: #e8e8e8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 {
+            font-family: "Crimson Pro", Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: var(--primary-light);
+            border-bottom-color: var(--primary-light);
+        }
+
+        /* ── Layout ── */
+        .container {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            min-height: 100vh;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-subtle) 100%);
+            border-right: 1px solid var(--border-light);
+            padding: 60px 40px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .profile-header {
+            text-align: center;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 24px;
+            display: block;
+            border: 3px solid var(--accent);
+            box-shadow: 0 8px 24px rgba(0, 48, 135, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 32px rgba(0, 48, 135, 0.25);
+        }
+
+        .profile-header h1 {
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .profile-header .title {
+            font-size: 15px;
+            color: var(--text-medium);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Navigation ── */
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 24px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            color: var(--text-medium);
+            font-weight: 500;
+            border: none;
+            padding: 8px 0;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* ── Contact ── */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 14px;
+        }
+
+        .contact-info a {
+            color: var(--text-medium);
+            word-break: break-word;
+            border: none;
+        }
+
+        .contact-info a:hover { color: var(--accent); }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .social-links a {
+            padding: 10px 20px;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .social-links a:hover {
+            border-color: var(--accent);
+            background-color: rgba(0, 48, 135, 0.04);
+        }
+
+        /* ── Main Content ── */
+        .main-content {
+            padding: 60px 80px;
+            max-width: 900px;
+        }
+
+        section {
+            margin-bottom: 80px;
+            animation: slideIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        section h2 {
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .bio-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-medium);
+            margin-top: 32px;
+        }
+
+        .bio-text a { font-weight: 500; }
+
+        /* ── Paper cards ── */
+        .paper-list {
+            list-style: none;
+            margin-top: 32px;
+        }
+
+        .paper-item {
+            padding: 22px 26px;        /* ↓ was 32px */
+            margin-bottom: 24px;       /* ↓ was 32px */
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paper-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+
+        .paper-item:hover::before { transform: scaleY(1); }
+
+        .paper-item:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Published papers: slightly smaller than Work-in-Progress */
+        #papers .paper-title {
+            font-family: "Crimson Pro", Georgia, serif;
+            font-size: 24px;           /* ↓ was 24px */
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        /* Work-in-Progress keeps original size */
+        #research .paper-title {
+            font-family: "Crimson Pro", Georgia, serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .paper-authors {
+            font-size: 14px;           /* ↓ was 15px for published */
+            color: var(--text-medium);
+            margin-bottom: 6px;
+        }
+
+        .paper-authors a { color: var(--text-medium); font-weight: 500; }
+        .paper-authors a:hover { color: var(--primary); }
+
+        .paper-journal {
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* ── Paper meta buttons (DOI, PDF, Slides) ── */
+        .paper-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .paper-meta a {
+            font-size: 12px;
+            padding: 5px 12px;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-bottom: none;
+        }
+
+        .paper-meta a:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            border-bottom: none;
+        }
+
+        /* ── Collapsible abstract ── */
+        .abstract-toggle {
+            margin-top: 4px;
+        }
+
+        .abstract-toggle summary {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            list-style: none;          /* removes default triangle */
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--accent);
+            padding: 5px 12px;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            user-select: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        /* Chrome/Safari hide default marker */
+        .abstract-toggle summary::-webkit-details-marker { display: none; }
+
+        .abstract-toggle summary::before {
+            content: '▸';
+            font-size: 10px;
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .abstract-toggle[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .abstract-toggle summary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .abstract-toggle[open] summary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .abstract-body {
+            margin-top: 12px;
+            font-size: 14px;
+            line-height: 1.75;
+            color: var(--text-medium);
+            text-align: justify;
+            padding: 14px 16px;
+            background: rgba(0, 48, 135, 0.03);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            animation: abstractFadeIn 0.25s ease;
+        }
+
+        .abstract-body p {
+            margin-bottom: 10px;
+        }
+
+        .abstract-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        @keyframes abstractFadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Grant info block ── */
+        .grant-info {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            background: rgba(0, 48, 135, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+        }
+
+        .paper-abstract {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-medium);
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .paper-presentations {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--text-light);
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .paper-presentations a { color: var(--primary); font-weight: 500; }
+
+        /* ── Experience / Teaching ── */
+        .experience-list { margin-top: 32px; }
+
+        .experience-item {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .experience-item:last-child { border-bottom: none; }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .experience-title {
+            font-family: "Crimson Pro", Georgia, serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .experience-date {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            font-size: 15px;
+            color: var(--text-medium);
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .experience-details { list-style: none; padding: 0; margin: 8px 0; }
+
+        .experience-details li {
+            font-size: 15px;
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin: 12px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .experience-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* ── Grants toggle ── */
+        .grants-toggle {
+            margin-top: 24px;
+        }
+
+        .grants-toggle > summary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            list-style: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent);
+            padding: 8px 18px;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            user-select: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .grants-toggle > summary::-webkit-details-marker { display: none; }
+
+        .grants-toggle > summary::before {
+            content: '▸';
+            font-size: 11px;
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .grants-toggle[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        .grants-toggle > summary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .grants-toggle[open] > summary {
+            background: var(--accent);
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        /* ── Grants list ── */
+        .grants-list { margin-top: 8px; list-style: none; }
+
+        .grant-item {
+            display: flex;
+            gap: 20px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-light);
+            align-items: baseline;
+        }
+
+        .grant-item:last-child { border-bottom: none; }
+
+        .grant-year {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            white-space: nowrap;
+            min-width: 84px;
+        }
+
+        .grant-name {
+            font-size: 15px;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1200px) {
+            .container { grid-template-columns: 320px 1fr; }
+            .main-content { padding: 40px 60px; }
+        }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+                padding: 40px 24px;
+            }
+
+            .main-content { padding: 40px 24px; }
+            section h2 { font-size: 28px; }
+            .bio-text { font-size: 16px; }
+            #research .paper-title { font-size: 20px; }
+        }
+
+        html { scroll-behavior: smooth; }
+
+        ::selection {
+            background: rgba(0, 48, 135, 0.15);
+            color: var(--text-dark);
+        }
+
+        a:focus, button:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ═══ Sidebar ═══ -->
+    <aside class="sidebar">
+        <div class="profile-header">
+            <img src="Photo.JPG" alt="Dmitry Rudenko" class="profile-image">
+            <h1>Dmitry Rudenko</h1>
+            <p class="title">PhD Student at CERGE-EI</p>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#papers">Published Papers</a>
+            <a href="#research">Work in Progress</a>
+            <a href="#teaching">Teaching</a>
+            <a href="#grants">Grants &amp; Awards</a>
+            <a href="CV.pdf" target="_blank">Curriculum Vitae</a>
+        </nav>
+
+        <div class="contact-info">
+            <a href="mailto:dmitry.rudenko@cerge-ei.cz">dmitry.rudenko[at]cerge-ei.cz</a>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/dmitry-rudenko-6652bbaa/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ═══ Main Content ═══ -->
+    <main class="main-content">
+
+        <!-- About -->
+        <section id="about">
+            <h2>About</h2>
+            <div class="bio-text">
+                <p>I am a PhD student at the <a href="https://www.cerge-ei.cz/" target="_blank">Center for Economic Research and Graduate Education – Economics Institute in Prague, Czech Republic (CERGE-EI)</a>. My supervisor is <a href="https://home.cerge-ei.cz/mittag/index.html" target="_blank">Nikolas Mittag</a>.</p>
+                <p style="margin-top: 1em;">I am an applied economist focusing on topics of Poverty and Inequality, Energy Economics.</p>
+            </div>
+        </section>
+
+        <!-- Published Papers -->
+        <section id="papers">
+            <h2>Published Papers</h2>
+
+            <ul class="paper-list">
+
+                <li class="paper-item">
+                    <h3 class="paper-title">The Determinants of Energy Intensity in Indonesia</h3>
+                    <p class="paper-authors">with G. Tanasov</p>
+                    <p class="paper-journal"><em>International Journal of Emerging Markets</em>, 17(3), pp. 832–857, 2022</p>
+                    <div class="paper-meta">
+                        <a href="https://doi.org/10.1108/IJOEM-01-2020-0048" target="_blank">DOI</a>
+                        <a href="Papers/2022_Rudenko.pdf" target="_blank">PDF</a>
+                    </div>
+                    <details class="abstract-toggle">
+                        <summary>Abstract</summary>
+                        <div class="abstract-body">
+                            <p><strong>Purpose</strong> – Indonesia is the fourth most populous country in the world, which has a strong effect on primary energy use and depletion of natural resources. This paper considers energy intensity (EI) defined as a measure of the amount of energy it takes to produce a dollar’s worth of economic output. The purpose of the paper is to explore how different factors contributed to the decline in Indonesia’s EI.</p>
+                            <p><strong>Design/methodology/approach</strong> – The cointegration regression methodology is applied to explore the long-term nexus between EI and its factors in Indonesia during 1990–2016.</p>
+                            <p><strong>Findings</strong> – Results show that domestic credit to the private sector, as well as the share of alternative energy, has a significant impact on the decline of EI in Indonesia.</p>
+                            <p><strong>Research limitations/implications</strong> – We do not try to rule out other possible determinants of EI. We consider the determinants of EI using time series data, while an ideal analysis would be based on panel-level data. Another limitation is that the study covers only the small-time period from 1990 to 2016.</p>
+                            <p><strong>Practical implications</strong> – Our findings serve to aid the government and policymakers in prioritizing improvements in the sphere of energy policy. An important policy implication, regarding Indonesia, that arises from our study is that, for the country to be able to decrease its EI, it must be able to develop its financial market and zero-carbon energy sources, mainly geothermal energy with its huge potential.</p>
+                            <p><strong>Originality/value</strong> – We show that energy prices, financial development and the share of alternative energy sources contribute to EI decrease. Policy recommendations include geothermal and solar energy development as one of the most prospective sources of alternative energy in Indonesia.</p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- <li class="paper-item">
+                    <h3 class="paper-title">Environment and Economic Growth in the Russian Arctic</h3>
+                    <p class="paper-journal"><em>International Journal of Global Environmental Issues</em>, 17(2), pp. 163–174, 2018</p>
+                    <div class="paper-meta">
+                        <a href="https://doi.org/10.1504/IJGENVI.2018.091471" target="_blank">DOI</a>
+                        <a href="papers/russian_arctic.pdf" target="_blank">PDF</a>
+                    </div>
+                    <details class="abstract-toggle">
+                        <summary>Abstract</summary>
+                        <p class="abstract-body">[Add abstract text here]</p>
+                    </details>
+                </li> -->
+
+                <!-- <li class="paper-item">
+                    <h3 class="paper-title">Transition towards an Entrepreneurial University: a Case Study of the Tyumen State University</h3>
+                    <p class="paper-authors">with T. Pogodaeva and E. Golubev</p>
+                    <p class="paper-journal"><em>International Journal of Business and Globalisation</em>, 18(1), pp. 96–111, 2017</p>
+                    <div class="paper-meta">
+                        <a href="https://doi.org/10.1504/IJBG.2017.081026" target="_blank">DOI</a>
+                        <a href="papers/tyumen_university.pdf" target="_blank">PDF</a>
+                    </div>
+                    <details class="abstract-toggle">
+                        <summary>Abstract</summary>
+                        <p class="abstract-body">[Add abstract text here]</p>
+                    </details>
+                </li> -->
+
+                <!-- <li class="paper-item">
+                    <h3 class="paper-title">A Comprehensive Approach to the Study of Poverty in the Region</h3>
+                    <p class="paper-journal"><em>Regional Research of Russia</em>, 4(3), pp. 141–149, 2014</p>
+                    <div class="paper-meta">
+                        <a href="https://doi.org/10.1134/S2079970514030083" target="_blank">DOI</a>
+                        <a href="papers/poverty_region.pdf" target="_blank">PDF</a>
+                    </div>
+                    <details class="abstract-toggle">
+                        <summary>Abstract</summary>
+                        <p class="abstract-body">[Add abstract text here]</p>
+                    </details>
+                </li> -->
+
+            </ul>
+        </section>
+
+        <!-- Work in Progress -->
+        <section id="research">
+            <h2>Work in Progress</h2>
+
+            <ul class="paper-list">
+                <li class="paper-item">
+                    <h3 class="paper-title">Does Poverty in Childhood Lead to Health Responses? Evidence from Russia</h3>
+                    <p class="paper-authors">with <a href="ADD LINK HERE" target="_blank">Alina Khabibulina</a></p>
+
+                    <!-- <div class="paper-meta">
+                        <a href="slides_EWMES.pdf" target="_blank">Slides</a>
+                    </div> -->
+
+                    <!-- <div class="grant-info">
+                        This project is supported by the Charles University Grant Agency no. 69224
+                    </div> -->
+
+                    <p class="paper-abstract">
+                        Children have historically constituted a focal demographic for social policy interventions, given the pivotal role of early investments in human capital in shaping individual socio-economic trajectories. Despite extensive research on the nexus between socioeconomic status and child health, our comprehension of this complex relationship remains significantly limited in transition economies, exposed to a severe economic crisis in the 1990s. This paper offers a significant contribution through an analysis of the relationship between child health and household poverty status in Russia. The primary objective of this study is to examine the degree to which children in impoverished households encounter inferior health outcomes compared to children whose parents do not face financial hardship. We used data from the Russian Longitudinal Monitoring Survey (RLMS), from 2000 to 2021, to construct a data set that links child-year outcomes to several parental and family-level variables. To control for the endogeneity of poverty in child health, the instrumental variables approach is utilised. We find evidence of the negative impact of household poverty status on child health: children from poor families are about 0.5 standard deviations shorter, but the causal effect of poverty on subjective child health and obesity is much smaller. Our study implies that food transfers are likely to deliver substantial improvements in child health.
+                    </p>
+
+                    <!-- <p class="paper-presentations">
+                        Presented at: <a href="https://cse.cz/en/" target="_blank">CES Biannual Meeting 2024</a>, <a href="https://www.eui.eu/events?id=574575" target="_blank">Political Behaviour Colloquium 2025</a>, <a href="https://res.org.uk/event-listing/res-2025-annual-conference/" target="_blank">RES 2025</a>, <a href="https://cyprusconferences.org/ewmes2025/" target="_blank">EWMES 2025</a>
+                    </p> -->
+                </li>
+
+                <!-- <li class="paper-item">
+                    <h3 class="paper-title">The Impact of War on Ethnic Sentencing Disparities in Russian Courts: Extension to Criminal Cases</h3>
+                    <p class="paper-authors">with <a href="https://www.linkedin.com/in/arsenii-shcherbov/" target="_blank">Arsenii Shcherbov</a></p>
+                    <p class="paper-abstract">
+                        <i>We are working on extending our paper on judicial sentencing disparities to criminal cases, including driving-under-influence and theft. Currently, we are working with LLMs to classify cases and extract additional information from the texts of decisions.</i>
+                    </p>
+                </li> -->
+<!-- 
+                <li class="paper-item">
+                    <h3 class="paper-title">Religion and State Power in Wartime Russia</h3>
+                    <p class="paper-authors">with <a href="https://clarasievert.com" target="_blank">Clara Sievert</a></p>
+                    <p class="paper-abstract">
+                        <i>Working paper and slides available upon request.</i>
+                    </p>
+                </li> -->
+
+                <!-- <li class="paper-item">
+                    <h3 class="paper-title">2018 Russian Judicial Reform and Its Effects on Gender Disparities in Russian Courts</h3>
+                    <p class="paper-abstract">
+                        <i>Data preparation and analysis ongoing.</i>
+                    </p>
+                </li> -->
+            </ul>
+        </section>
+
+        <!-- Teaching -->
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">CERGE-EI</h3>
+                        <span class="experience-date">2026</span>
+                    </div>
+                    <ul class="experience-details">
+                        <li><strong>Teaching Assistant, Microeconometrics II</strong> — Second year PhD in Economic Research (February 2026 – May 2026)</li>
+                        <!-- <li><strong>Teaching Assistant, Introduction to R</strong> — First year MA/PhD in Economic Research (October 2022, 2023, 2024)</li> -->
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Higher School of Economics, Saint Petersburg</h3>
+                        <span class="experience-date">2025 - Present</span>
+                    </div>
+                    <ul class="experience-details">
+                        <li><strong>Lecturer, International Economics and Trade</strong> — First year MA in Economics (September 2025 – December 2025)</li>
+                        <li><strong>Lecturer, World Economics and International Affairs</strong> — First year MA in Economics (September 2025 – October 2025)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grants & Awards -->
+        <section id="grants">
+            <h2>Grants &amp; Awards</h2>
+            <details class="grants-toggle">
+                <summary>Show all grants &amp; awards</summary>
+            <ul class="grants-list">
+                <li class="grant-item">
+                    <span class="grant-year">2024</span>
+                    <span class="grant-name">Marie Skłodowska-Curie Research Mobility Support, Grant No. 870245</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2024</span>
+                    <span class="grant-name">Stapleton Scholars Award</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2017 – 2021</span>
+                    <span class="grant-name">European Union Grant 585761-EPP-1-2017-1-FI-EPPKA2-CBHE-JP EduEnvi</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2019 – 2020</span>
+                    <span class="grant-name">Russian Foundation of Basic Research Grant 19-410-450005</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2014 – 2018</span>
+                    <span class="grant-name">Russian Scientific Fund Grant 14-38-00009</span>
+                </li>
+                <!-- <li class="grant-item">
+                    <span class="grant-year">2017</span>
+                    <span class="grant-name">DAAD Fellowship, University of Göttingen</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2017</span>
+                    <span class="grant-name">BOFIT Fellowship, Bank of Finland</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2016</span>
+                    <span class="grant-name">Institute for Russian and Eurasian Studies Fellowship, Uppsala University</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2015 – 2016</span>
+                    <span class="grant-name">Russian Scientific Fund for the Humanities Grant 15-32-01350</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2015</span>
+                    <span class="grant-name">Sverker Åström Foundation Fellowship, University of Gothenburg</span>
+                </li> -->
+                <li class="grant-item"> 
+                    <span class="grant-year">2014 – 2015</span>
+                    <span class="grant-name">Russian President's Grant for Young Scientists 14.Z56.14.3051-MK</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2013</span>
+                    <span class="grant-name">Certificate of Merit, Department of Education and Science of the Tyumen Region</span>
+                </li>
+                <!-- <li class="grant-item">
+                    <span class="grant-year">2013</span>
+                    <span class="grant-name">Ministry of Education and Science of Russia Grant 14.V37.21.0972</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2010</span>
+                    <span class="grant-name">Governor of the Tyumen Region Grant</span>
+                </li>
+                <li class="grant-item">
+                    <span class="grant-year">2010</span>
+                    <span class="grant-name">Human Capital Foundation Grant</span>
+                </li> -->
+            </ul>
+            </details>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
